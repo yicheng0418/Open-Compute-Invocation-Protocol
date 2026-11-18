@@ -1,6 +1,6 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "$id": "https://ocip.dev/spec/v0.1/schemas/authority-manifest.schema.json",
+  "$id": "urn:ocip:spec:v0.1:schemas:authority-manifest.schema.json",
   "title": "OCIP Authority Manifest",
   "description": "A bounded delegation of actions an agent may perform on behalf of a user or organization.",
   "type": "object",
