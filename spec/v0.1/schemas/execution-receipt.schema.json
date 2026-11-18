@@ -1,0 +1,26 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://ocip.dev/spec/v0.1/schemas/execution-receipt.schema.json",
+  "title": "OCIP Execution Receipt",
+  "description": "A provider-signed record of execution claims and metering evidence; not proof of arbitrary result correctness by itself.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["protocol_version", "receipt_id", "invocation_id", "provider_id", "status", "issued_at"],
+  "properties": {
+    "protocol_version": {"const": "0.1"},
+    "receipt_id": {"type": "string", "minLength": 1},
+    "invocation_id": {"type": "string", "minLength": 1},
+    "provider_id": {"type": "string", "minLength": 1},
+    "status": {"type": "string", "enum": ["succeeded", "failed", "cancelled", "deadline_exceeded", "partially_succeeded"]},
+    "issued_at": {"type": "string", "format": "date-time"},
+    "started_at": {"type": "string", "format": "date-time"},
+    "completed_at": {"type": "string", "format": "date-time"},
+    "workload_digest": {"type": "string"},
+    "result_ref": {"type": "string"},
+    "result_digest": {"type": "string"},
+    "metering": {"type": "object", "properties": {"queue_ms": {"type": "integer", "minimum": 0}, "startup_ms": {"type": "integer", "minimum": 0}, "transfer_ms": {"type": "integer", "minimum": 0}, "compute_ms": {"type": "integer", "minimum": 0}, "return_ms": {"type": "integer", "minimum": 0}, "billed_amount": {"type": "number", "minimum": 0}, "currency": {"type": "string"}}},
+    "verification": {"type": "object", "properties": {"profile": {"type": "string"}, "status": {"type": "string", "enum": ["not_checked", "passed", "failed", "inconclusive"]}, "evidence_refs": {"type": "array", "items": {"type": "string"}}}},
+    "signature": {"type": "object", "description": "Signature envelope format remains to be specified."},
+    "extensions": {"type": "object"}
+  }
+}
