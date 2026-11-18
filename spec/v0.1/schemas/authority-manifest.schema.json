@@ -1,0 +1,44 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://ocip.dev/spec/v0.1/schemas/authority-manifest.schema.json",
+  "title": "OCIP Authority Manifest",
+  "description": "A bounded delegation of actions an agent may perform on behalf of a user or organization.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["protocol_version", "credential_id", "issuer", "subject", "issued_at", "expires_at", "permissions"],
+  "properties": {
+    "protocol_version": {"const": "0.1"},
+    "credential_id": {"type": "string", "minLength": 1},
+    "issuer": {"type": "string", "minLength": 1},
+    "subject": {"type": "string", "minLength": 1},
+    "audience": {"type": "array", "items": {"type": "string"}},
+    "issued_at": {"type": "string", "format": "date-time"},
+    "expires_at": {"type": "string", "format": "date-time"},
+    "parent_credential_id": {"type": "string"},
+    "permissions": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["actions"],
+      "properties": {
+        "actions": {
+          "type": "array",
+          "uniqueItems": true,
+          "items": {"type": "string", "enum": ["discover", "reserve", "invoke", "purchase", "share", "exchange", "negotiate", "delegate", "cancel"]}
+        },
+        "provider_allowlist": {"type": "array", "items": {"type": "string"}},
+        "provider_denylist": {"type": "array", "items": {"type": "string"}},
+        "workload_kinds": {"type": "array", "items": {"type": "string"}},
+        "max_spend": {"type": "number", "minimum": 0},
+        "currency": {"type": "string"},
+        "max_lease_seconds": {"type": "integer", "minimum": 1},
+        "data_regions": {"type": "array", "items": {"type": "string"}},
+        "allow_sharing": {"type": "boolean", "default": false},
+        "allow_subdelegation": {"type": "boolean", "default": false},
+        "max_delegation_depth": {"type": "integer", "minimum": 0, "maximum": 8}
+      }
+    },
+    "revocation": {"type": "object", "properties": {"status_ref": {"type": "string"}, "checked_at": {"type": "string", "format": "date-time"}}},
+    "signature": {"type": "object", "description": "Signature envelope format remains to be specified."},
+    "extensions": {"type": "object"}
+  }
+}
