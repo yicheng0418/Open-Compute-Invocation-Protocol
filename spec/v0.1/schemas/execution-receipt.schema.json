@@ -1,6 +1,6 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "$id": "https://ocip.dev/spec/v0.1/schemas/execution-receipt.schema.json",
+  "$id": "urn:ocip:spec:v0.1:schemas:execution-receipt.schema.json",
   "title": "OCIP Execution Receipt",
   "description": "A provider-signed record of execution claims and metering evidence; not proof of arbitrary result correctness by itself.",
   "type": "object",
