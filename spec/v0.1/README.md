@@ -60,3 +60,18 @@ Use two-stage scheduling: hard feasibility filtering followed by workload-specif
 - Receipt evidence profiles by workload type.
 - Streaming and cancellation semantics.
 - Conformance tests and interoperability profiles.
+
+
+## Machine-readable schemas and interaction contract
+
+- [Protocol semantics](protocol.md)
+- [JSON Schema index](schemas/README.md)
+- [Workload Intent](schemas/workload-intent.schema.json)
+- [Provider Manifest](schemas/provider-manifest.schema.json)
+- [Authority Manifest](schemas/authority-manifest.schema.json)
+- [Resource Reservation / Lease](schemas/resource-reservation.schema.json)
+- [Invocation](schemas/invocation.schema.json)
+- [Execution Receipt](schemas/execution-receipt.schema.json)
+- [Optional Execution Event](schemas/execution-event.schema.json)
+
+These are draft schemas and require interoperability tests before being treated as stable contracts.
