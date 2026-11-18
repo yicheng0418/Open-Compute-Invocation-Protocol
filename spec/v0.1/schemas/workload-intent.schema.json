@@ -1,6 +1,6 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "$id": "https://ocip.dev/spec/v0.1/schemas/workload-intent.schema.json",
+  "$id": "urn:ocip:spec:v0.1:schemas:workload-intent.schema.json",
   "title": "OCIP Workload Intent",
   "description": "A consumer's language-neutral description of a compute task and its constraints.",
   "type": "object",
