@@ -29,7 +29,7 @@ OCIP is an early design project. This repository contains a working **v0.1 desig
 - **Execution Runtime:** submits, monitors, cancels and receives workloads through provider adapters.
 - **Async Control Plane:** refreshes discovery, health, benchmarks, offers, reservations, revocations and audit records outside the critical path.
 
-See [architecture](docs/architecture.md), [authority and delegation](docs/authority-and-delegation.md), [compute units and exchange](docs/compute-units-and-exchange.md), and the [v0.1 draft](spec/v0.1/README.md).
+See [architecture](docs/architecture.md), [authority and delegation](docs/authority-and-delegation.md), [compute units and exchange](docs/compute-units-and-exchange.md), [ADR-001 language and ABI strategy](docs/adr/ADR-001-core-language-and-abi-strategy.md), and the [v0.1 protocol draft](spec/v0.1/README.md).
 
 ## What OCIP is—and is not
 
