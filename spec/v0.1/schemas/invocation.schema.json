@@ -1,0 +1,23 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://ocip.dev/spec/v0.1/schemas/invocation.schema.json",
+  "title": "OCIP Invocation",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["protocol_version", "invocation_id", "idempotency_key", "request_id", "provider_id", "reservation_id", "submitted_at", "deadline", "workload_digest"],
+  "properties": {
+    "protocol_version": {"const": "0.1"},
+    "invocation_id": {"type": "string", "minLength": 1},
+    "idempotency_key": {"type": "string", "minLength": 1},
+    "request_id": {"type": "string", "minLength": 1},
+    "provider_id": {"type": "string", "minLength": 1},
+    "reservation_id": {"type": "string", "minLength": 1},
+    "authority_credential_id": {"type": "string", "minLength": 1},
+    "submitted_at": {"type": "string", "format": "date-time"},
+    "deadline": {"type": "string", "format": "date-time"},
+    "workload_digest": {"type": "string", "minLength": 1},
+    "input_ref": {"type": "string"},
+    "callback_mode": {"type": "string", "enum": ["poll", "stream", "webhook"], "default": "poll"},
+    "extensions": {"type": "object"}
+  }
+}
