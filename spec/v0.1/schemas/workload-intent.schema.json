@@ -1,0 +1,64 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://ocip.dev/spec/v0.1/schemas/workload-intent.schema.json",
+  "title": "OCIP Workload Intent",
+  "description": "A consumer's language-neutral description of a compute task and its constraints.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["protocol_version", "request_id", "workload", "created_at", "deadline"],
+  "properties": {
+    "protocol_version": {"const": "0.1"},
+    "request_id": {"type": "string", "minLength": 1, "maxLength": 128},
+    "created_at": {"type": "string", "format": "date-time"},
+    "deadline": {"type": "string", "format": "date-time"},
+    "workload": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["kind"],
+      "properties": {
+        "kind": {"type": "string", "enum": ["inference", "batch", "training", "simulation", "other"]},
+        "model_or_runtime": {"type": "string"},
+        "input_ref": {"type": "string", "description": "Opaque or provider-accessible reference; avoid embedding large payloads."},
+        "input_digest": {"type": "string"},
+        "parameters": {"type": "object"},
+        "required_capabilities": {"type": "array", "items": {"type": "string"}, "uniqueItems": true},
+        "minimum_memory_bytes": {"type": "integer", "minimum": 0},
+        "precision": {"type": "string"},
+        "quality_target": {"type": "object"},
+        "completion_condition": {"type": "string"}
+      }
+    },
+    "constraints": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "data_regions_allowed": {"type": "array", "items": {"type": "string"}, "uniqueItems": true},
+        "max_price": {"type": "number", "minimum": 0},
+        "currency": {"type": "string", "minLength": 3, "maxLength": 3},
+        "max_queue_ms": {"type": "integer", "minimum": 0},
+        "max_startup_ms": {"type": "integer", "minimum": 0},
+        "required_reliability": {"type": "number", "minimum": 0, "maximum": 1},
+        "privacy_class": {"type": "string"},
+        "provider_allowlist": {"type": "array", "items": {"type": "string"}},
+        "provider_denylist": {"type": "array", "items": {"type": "string"}}
+      }
+    },
+    "retry": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "safe_to_retry": {"type": "boolean", "default": false},
+        "max_attempts": {"type": "integer", "minimum": 1, "maximum": 5, "default": 1}
+      }
+    },
+    "verification": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "profile": {"type": "string", "enum": ["none", "application", "benchmark", "sampling", "redundant", "attested"]},
+        "required_evidence": {"type": "array", "items": {"type": "string"}}
+      }
+    },
+    "extensions": {"type": "object"}
+  }
+}
