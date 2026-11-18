@@ -1,6 +1,6 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "$id": "https://ocip.dev/spec/v0.1/schemas/execution-event.schema.json",
+  "$id": "urn:ocip:spec:v0.1:schemas:execution-event.schema.json",
   "title": "OCIP Execution Event",
   "description": "Optional progress or state event emitted during an invocation.",
   "type": "object",
