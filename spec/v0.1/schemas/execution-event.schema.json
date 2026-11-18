@@ -1,0 +1,22 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://ocip.dev/spec/v0.1/schemas/execution-event.schema.json",
+  "title": "OCIP Execution Event",
+  "description": "Optional progress or state event emitted during an invocation.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["protocol_version", "event_id", "invocation_id", "provider_id", "sequence", "event_type", "occurred_at"],
+  "properties": {
+    "protocol_version": {"const": "0.1"},
+    "event_id": {"type": "string"},
+    "invocation_id": {"type": "string"},
+    "provider_id": {"type": "string"},
+    "sequence": {"type": "integer", "minimum": 0},
+    "event_type": {"type": "string", "enum": ["accepted", "queued", "started", "progress", "checkpoint", "cancellation_requested", "completed", "failed", "cancelled"]},
+    "occurred_at": {"type": "string", "format": "date-time"},
+    "progress": {"type": "number", "minimum": 0, "maximum": 1},
+    "message": {"type": "string"},
+    "metrics": {"type": "object"},
+    "extensions": {"type": "object"}
+  }
+}
