@@ -31,6 +31,12 @@ OCIP is an early design project. This repository contains a working **v0.1 desig
 
 See [architecture](docs/architecture.md), [authority and delegation](docs/authority-and-delegation.md), [compute units and exchange](docs/compute-units-and-exchange.md), [ADR-001 language and ABI strategy](docs/adr/ADR-001-core-language-and-abi-strategy.md), and the [v0.1 protocol draft](spec/v0.1/README.md).
 
+## Cognitive systems (companion research)
+
+OCIP focuses on compute-service interoperability. For a complementary proposal on how multiple small models can collaborate dynamically, share a governed cognitive workspace, explore unknowns, and evolve reusable abstractions, see **[CGA-01: Dynamic Collaborative Cognitive Growth Architecture](docs/cga-01-dynamic-cognitive-architecture.md)**.
+
+CGA is a companion reference architecture and experimental research proposal—not a normative OCIP protocol extension. CGA may use OCIP to discover and invoke external model or compute services under OCIP's authority and execution controls.
+
 ## What OCIP is—and is not
 
 OCIP is an interoperability protocol for compute-service discovery and invocation. It is not a cloud provider, GPU exchange, cryptocurrency, token, blockchain, or replacement for Kubernetes, Ray, Slurm, model-serving APIs, or payment networks.
